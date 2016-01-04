@@ -1,11 +1,6 @@
 # django-example
 [![codecov.io](https://codecov.io/github/DLRSP/example/coverage.svg?branch=master)](https://codecov.io/github/DLRSP/example?branch=master)
-
-## Branches
 [![master](https://travis-ci.org/DLRSP/example.svg?branch=master)](https://travis-ci.org/DLRSP/example)
-[![django-errors](https://travis-ci.org/DLRSP/example.svg?branch=django-errors)](https://travis-ci.org/DLRSP/example)
-[![django-sp](https://travis-ci.org/DLRSP/example.svg?branch=django-sp)](https://travis-ci.org/DLRSP/example)
-
 
 	$ mkdir example
 	$ cd example
