@@ -1,4 +1,5 @@
 # django-example
+[![Build Status](https://travis-ci.org/DLRSP/example.svg)](https://travis-ci.org/DLRSP/example)
 [![codecov.io](https://codecov.io/github/DLRSP/example/coverage.svg?branch=master)](https://codecov.io/github/DLRSP/example?branch=master)
 
 	$ mkdir example
