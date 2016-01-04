@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+gettext = lambda s: s
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,6 +28,16 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
+LANGUAGES = (
+    ## Customize this
+    ('it', gettext('it')),
+    ('en', gettext('en')),
+    ('es', gettext('es')),
+    ('fr', gettext('fr')),
+    ('de', gettext('de')),
+    ('ru', gettext('ru')),
+    ('cn', gettext('cn')),
+)
 
 # Application definition
 INSTALLED_APPS = [
@@ -37,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_nose',
+    'django_errors',
     'example'
 ]
 
@@ -46,7 +58,7 @@ NOSE_INCLUDE_EXE=1
 # Tell nose to measure coverage on the 'foo' and 'bar' apps
 NOSE_ARGS = [
     '--with-coverage',
-    '--cover-package=example',
+    '--cover-package=django_errors',
 ]
 
 MIDDLEWARE_CLASSES = (
