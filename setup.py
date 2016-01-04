@@ -2,10 +2,10 @@ from setuptools import setup
 
 readme = open('README.md').read()
 
-from django_errors import __version__ as version
+from example import __version__ as version
 
 setup(
-    name="django example",
+    name="example",
     version=version,
     url='https://github.com/DLRSP/example',
     license='MIT',
