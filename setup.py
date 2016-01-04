@@ -1,0 +1,30 @@
+from setuptools import setup
+
+readme = open('README.md').read()
+
+from django_errors import __version__ as version
+
+setup(
+    name="django example",
+    version=version,
+    url='https://github.com/DLRSP/example',
+    license='MIT',
+    description="Django example Projects",
+    author='Davide La Rosa',
+    author_email='davide.larosa.coins@gmail.com',
+
+    packages=['example', ],
+    long_description=readme,
+    include_package_data=True,
+    zip_safe=False,
+    install_requires=['django==1.8.7', ],
+    classifiers=[
+        'Development Status :: 4 - Beta',
+        'Framework :: Django',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Topic :: Internet :: WWW/HTTP :: BTC :: BitCoin :: 500 :: 400 :: errors',
+    ]
+)
