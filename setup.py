@@ -12,7 +12,6 @@ setup(
     description="Django example Projects",
     author='Davide La Rosa',
     author_email='davide.larosa.coins@gmail.com',
-
     packages=['example', ],
     long_description=readme,
     include_package_data=True,
