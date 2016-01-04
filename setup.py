@@ -26,6 +26,6 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
-        'Topic :: Internet :: WWW/HTTP :: BTC :: BitCoin :: 500 :: 400 :: errors',
+        'Topic :: Internet :: WWW/HTTP :: BTC ',
     ]
 )
