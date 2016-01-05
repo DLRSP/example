@@ -18,9 +18,9 @@ setup(
     zip_safe=False,
     dependency_links=['https://github.com/DLRSP/django-errors'],
     install_requires=['django_nose',
-					  'django==1.8.7',
-					  'django-errors',
-					  ],
+		      'django==1.8.7',
+		      'django-errors',
+		      ],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Framework :: Django',

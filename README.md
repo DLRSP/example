@@ -1,6 +1,6 @@
-# django-example [**django-errors**]
-[![codecov.io](https://codecov.io/github/DLRSP/django-errors/coverage.svg?branch=master)](https://codecov.io/github/DLRSP/django-errors?branch=master)
-[![master](https://travis-ci.org/DLRSP/django-errors.svg?branch=master)](https://travis-ci.org/DLRSP/django-errors)
+# django-example
+[![codecov.io](https://codecov.io/github/DLRSP/example/coverage.svg?branch=master)](https://codecov.io/github/DLRSP/django-errors?branch=master)
+[![master](https://travis-ci.org/DLRSP/example.svg?branch=master)](https://travis-ci.org/DLRSP/django-errors)
 
 	$ mkdir example
 	$ cd example
@@ -13,6 +13,8 @@
 	# create branches
 	$ git checkout -b django-errors
 	$ git push origin django-errors
+	$ git checkout -b django-sp
+	$ git push origin django-sp
 
 	# check branches
 	$ git branch
