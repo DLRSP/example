@@ -21,7 +21,7 @@ setup(
     zip_safe=False,
     install_requires=['django_nose',
                       'django==1.8.7',
-                      'django-errors'
+                      'django-errors',
                       ],
     classifiers=[
         'Development Status :: 4 - Beta',
