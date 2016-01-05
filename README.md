@@ -1,6 +1,6 @@
 # django-example [**django-errors**]
-[![codecov.io](https://codecov.io/github/DLRSP/django-errors/coverage.svg?branch=master)](https://codecov.io/github/DLRSP/django-errors?branch=master)
-[![master](https://travis-ci.org/DLRSP/django-errors.svg?branch=master)](https://travis-ci.org/DLRSP/django-errors)
+[![codecov.io](https://codecov.io/github/DLRSP/example/coverage.svg?branch=django-errors)](https://codecov.io/github/DLRSP/example?branch=django-errors)
+[![master](https://travis-ci.org/DLRSP/example.svg?branch=django-errors)](https://travis-ci.org/DLRSP/example)
 
 	$ mkdir example
 	$ cd example
