@@ -3,19 +3,19 @@ from setuptools import setup
 try:
     readme = open('README.md').read()
 except:
-    readme = u"Wrapper Views for common errors"
+    readme = u"Django Example Projects"
 
-from django_errors import __version__ as version
+from example import __version__ as version
 
 setup(
-    name="django_errors",
+    name="example",
     version=version,
-    url='https://github.com/DLRSP/django-errors',
+    url='https://github.com/DLRSP/example',
     license='MIT',
-    description="Wrapper Views for common errors",
+    description="Django Example",
     author='Davide La Rosa',
     author_email='dlrsp.py@gmail.com',
-    packages=['django_errors', ],
+    packages=['example', ],
     long_description=readme,
     include_package_data=True,
     zip_safe=False,
@@ -33,4 +33,3 @@ setup(
         'Topic :: Internet :: WWW/HTTP',
     ]
 )
-
