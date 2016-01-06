@@ -3,19 +3,22 @@
 # pylint: disable=R0904, C0103
 
 from django.test import TestCase
-
+from django.contrib.sites.models import Site
 from django.core.exceptions import ObjectDoesNotExist
 import logging
 
 LOGGER = logging.getLogger(name='example')
 
-
+new_site = Site.objects.create(domain='foo.com', name='foo.com')
+LOGGER.debug("Initialize Site"+str(new_site.id))
+        
 class ExampleTestCase(TestCase):
     """Test Case for Social Profile"""
 
     def setUp(self):
         """Set up common assets for tests"""
         LOGGER.debug("Example Tests setUp")
+
 
     def tearDown(self):
         """Remove Test Data"""
