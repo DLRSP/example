@@ -29,6 +29,6 @@ before_install:
 install:
   - python setup.py install
 script:
-  - coverage run example/manage.py test --exe --all-modules
+  - coverage run manage.py jenkins --enable-coverage
 after_success:
   - codecov
