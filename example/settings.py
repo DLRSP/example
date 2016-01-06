@@ -68,11 +68,8 @@ SECRET_KEY = 'e1bt9i8u14_c!s8zi0b@5uqunn137+^vvo7$gj-6#z3&858h!w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-
 # https://docs.djangoproject.com/en/1.8/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 # https://docs.djangoproject.com/en/1.8/ref/applications/
@@ -85,9 +82,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_nose',
-    'django_errors',					## Needed by Wrap Errors
+    'django_errors',			## Needed by Wrap Errors
     'social.apps.django_app.default',	## Needed by SocialProfile
-    'socialprofile'
+    'socialprofile',
+    'example'
+]
+
+# Use nose to run all tests
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+NOSE_INCLUDE_EXE=1
+# Tell nose to measure coverage on the 'foo' and 'bar' apps
+NOSE_ARGS = [
+    '--with-coverage',
+    '--cover-package=socialprofile',
 ]
 
 MIDDLEWARE_CLASSES = (
