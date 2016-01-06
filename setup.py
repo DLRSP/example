@@ -19,7 +19,7 @@ setup(
     long_description=readme,
     include_package_data=True,
     zip_safe=False,
-    install_requires=['django_nose',
+    install_requires=['django-jenkins',
                       'django==1.8.7',
                       'django-errors',
                       'django-sp'

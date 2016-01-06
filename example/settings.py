@@ -81,21 +81,11 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_nose',
+    'django_jenkins',
     'django_errors',			## Needed by Wrap Errors
     'social.apps.django_app.default',	## Needed by SocialProfile
     'socialprofile',
     'example'
-]
-
-# Use nose to run all tests
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
-NOSE_INCLUDE_EXE=1
-# Tell nose to measure coverage on the 'foo' and 'bar' apps
-NOSE_ARGS = [
-    '--with-coverage',
-    '--cover-package=django_errors',
-    '--cover-package=socialprofile',
 ]
 
 MIDDLEWARE_CLASSES = (
