@@ -43,16 +43,16 @@ IGNORABLE_404_URLS = [
 
 # List of Admin users to be emailed by error system
 MANAGERS = (
-    ('Davide', 'davide.larosa.coins@gmail.com'),
+    ('DLRSP', 'dlrsp.py@gmail.com'),
 )
 ADMINS = MANAGERS
 
 # Email Settings
-EMAIL_HOST = '' 					# <--'a real smtp server'
-EMAIL_HOST_USER = ''				# <--'your_mailbox_username'
-EMAIL_HOST_PASSWORD = ''			# <--'your_mailbox_password'
-DEFAULT_FROM_EMAIL = ''				# <--'a real email address'
-SERVER_EMAIL = ''					# <--'a real email address'
+EMAIL_HOST = ''                           # <--'a real smtp server'
+EMAIL_HOST_USER = ''                      # <--'your_mailbox_username'
+EMAIL_HOST_PASSWORD = ''                  # <--'your_mailbox_password'
+DEFAULT_FROM_EMAIL = ''                   # <--'a real email address'
+SERVER_EMAIL = ''                         # <--'a real email address'
 ### Error Manager
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
