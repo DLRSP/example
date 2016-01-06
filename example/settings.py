@@ -90,6 +90,12 @@ INSTALLED_APPS = [
     'example'
 ]
 
+PROJECT_APPS = ['django_errors',
+                'socialprofile',
+                'example'
+]
+
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.gzip.GZipMiddleware',
     # 'django.middleware.doc.XViewMiddleware',						# <-- Deprecated till 1.8
