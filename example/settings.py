@@ -13,6 +13,48 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import os
 gettext = lambda s: s
 
+# Internationalization and localization
+# https://docs.djangoproject.com/en/1.8/topics/i18n/
+LANGUAGE_CODE = 'it'
+TIME_ZONE = 'UTC'
+USE_I18N = True
+USE_L10N = True
+USE_TZ = True
+
+LANGUAGES = (
+    ## Customize this
+    ('it', gettext('it')),
+    ('en', gettext('en')),
+    ('es', gettext('es')),
+    ('fr', gettext('fr')),
+    ('de', gettext('de')),
+    ('ru', gettext('ru')),
+    ('cn', gettext('cn')),
+)
+
+### Error Manager
+# https://docs.djangoproject.com/en/1.8/howto/error-reporting/#django.views.debug.SafeExceptionReporterFilter
+import re
+IGNORABLE_404_URLS = [
+    re.compile(r'^/apple-touch-icon.*\.png$'),
+    re.compile(r'^/favicon\.ico$'),
+    re.compile(r'^/robots\.txt$'),
+]
+
+# List of Admin users to be emailed by error system
+MANAGERS = (
+    ('Davide', 'davide.larosa.coins@gmail.com'),
+)
+ADMINS = MANAGERS
+
+# Email Settings
+EMAIL_HOST = '' 					# <--'a real smtp server'
+EMAIL_HOST_USER = ''				# <--'your_mailbox_username'
+EMAIL_HOST_PASSWORD = ''			# <--'your_mailbox_password'
+DEFAULT_FROM_EMAIL = ''				# <--'a real email address'
+SERVER_EMAIL = ''					# <--'a real email address'
+### Error Manager
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_DIR = os.path.join(BASE_DIR, 'example')
@@ -28,25 +70,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-## LOCALE
-LOCALE_PATHS = (
-    os.path.join(PROJECT_DIR, 'locale'),
-    os.path.join(BASE_DIR, 'socialprofile'),
-)
+# https://docs.djangoproject.com/en/1.8/ref/settings/#allowed-hosts
+ALLOWED_HOSTS = ['*']
 
-LANGUAGES = (
-    ## Customize this
-    ('it', gettext('it')),
-    ('en', gettext('en')),
-    ('es', gettext('es')),
-    ('fr', gettext('fr')),
-    ('de', gettext('de')),
-    ('ru', gettext('ru')),
-    ('cn', gettext('cn')),
-)
 
 # Application definition
-
+# https://docs.djangoproject.com/en/1.8/ref/applications/
 INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.admin',
@@ -55,25 +84,15 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_nose',
     'django_errors',					## Needed by Wrap Errors
     'social.apps.django_app.default',	## Needed by SocialProfile
     'socialprofile'
 ]
 
-# MIDDLEWARE_CLASSES = [
-    # # 'django.middleware.security.SecurityMiddleware',
-    # 'django.contrib.sessions.middleware.SessionMiddleware',
-    # 'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
-    # 'django.contrib.auth.middleware.AuthenticationMiddleware',
-    # 'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
-    # 'django.contrib.messages.middleware.MessageMiddleware',
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
-# ]
-
 MIDDLEWARE_CLASSES = (
     'django.middleware.gzip.GZipMiddleware',
-    # 'django.middleware.doc.XViewMiddleware',	# <- Deprecated till 1.8
+    # 'django.middleware.doc.XViewMiddleware',						# <-- Deprecated till 1.8
     'django.contrib.admindocs.middleware.XViewMiddleware',
     'django.middleware.http.ConditionalGetMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -81,9 +100,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
+    # 'django.middleware.common.BrokenLinkEmailsMiddleware',			# <-- Error Manager 404
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware'
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',		# <-- Common Vulnerability
 )
 
 ROOT_URLCONF = 'example.urls'
@@ -136,13 +156,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/1.9/topics/i18n/
-LANGUAGE_CODE = 'it'
-TIME_ZONE = 'UTC'
-USE_I18N = True
-USE_L10N = True
-USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
@@ -151,6 +164,59 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'staticroot')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(PROJECT_DIR, 'static')]
+
+# Logging
+# https://docs.djangoproject.com/en/1.8/topics/logging/
+LOGGING = {
+    'version': 1,
+    "disable_existing_loggers": False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'null': {
+            'level': 'DEBUG',
+            'class': 'logging.NullHandler',
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            # 'class': 'django.utils.log.AdminEmailHandler'			# <-- Error Manager 404
+            'class': 'logging.StreamHandler'
+        }
+    },
+    'loggers': {
+        "root": {
+            "handlers": ["console"],
+            'propagate': True,
+            "level": "INFO",
+        },
+        'socialprofile': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'DEBUG',
+        },
+        'django': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'INFO',
+        },
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+    }
+}
 
 # Social Profile
 ### Custom Social Profile User
