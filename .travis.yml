@@ -3,18 +3,17 @@ language: python
 matrix:
   allow_failures:
     - os: osx
+    - env: DJANGO_VERSION=3.0.2
 os:
   - linux
   - osx
 env:
-  - DJANGO_VERSION=1.8.7
-  - DJANGO_VERSION=1.8.8
-  - DJANGO_VERSION=1.9
+  - DJANGO_VERSION=2.2.9
+  - DJANGO_VERSION=3.0.2
 python:
-  - '2.7'
-  - '3.3'
-  - '3.4'
-  - pypy
+  - '3.6'
+  - '3.7'
+  - '3.8'
 deploy:
   provider: pypi
   user: KingDade
