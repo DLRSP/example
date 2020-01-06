@@ -43,7 +43,7 @@ IGNORABLE_404_URLS = [
 
 # List of Admin users to be emailed by error system
 MANAGERS = (
-    ('Davide', 'davide.larosa.coins@gmail.com'),
+    ('DLRSP', 'dlrsp.dev@gmail.com'),
 )
 ADMINS = MANAGERS
 
@@ -109,6 +109,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.cache.FetchFromCacheMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',		# <-- Common Vulnerability
 )
+MIDDLEWARE = MIDDLEWARE_CLASSES
 
 ROOT_URLCONF = 'example.urls'
 
