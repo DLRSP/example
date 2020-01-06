@@ -20,7 +20,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=['django-jenkins',
-                      'django==1.8.7',
+                      'django<2.3',
                       'django-errors',
                       'django-sp'
                       ],
