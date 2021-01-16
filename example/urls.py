@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.urls import path
 from django.conf import settings
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.static import serve
 from .views import index, view_bad_request, view_permission_denied, view_not_found, view_internal_server_error
@@ -26,6 +26,7 @@ from django_errors import views as errors_views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     path('', index, name="index"),
+    url(r'', include('django_errors.urls')),
 
     path('bad_request/', view_bad_request, name="bad_request"),
     path('permission_denied/', view_permission_denied, name="permission_denied"),
