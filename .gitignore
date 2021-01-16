@@ -29,6 +29,13 @@ local.properties
 
 
 #################
+## PyCharm
+#################
+.DS_Store
+.idea
+
+
+#################
 ## Visual Studio
 #################
 

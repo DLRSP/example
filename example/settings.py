@@ -15,7 +15,7 @@ gettext = lambda s: s
 
 # Internationalization and localization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
-LANGUAGE_CODE = 'it'
+LANGUAGE_CODE = 'en'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
@@ -57,7 +57,12 @@ SERVER_EMAIL = ''					# <--'a real email address'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PROJECT_DIR = os.path.join(BASE_DIR, 'example')
+
+# Root directory for this django project
+PROJECT_DIR = os.path.abspath(os.path.join(BASE_DIR, 'example'))
+
+# Directory where working files, such as media and databases are kept
+WORK_DIR = os.path.abspath(os.path.join(BASE_DIR, 'workdir'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -142,7 +147,7 @@ WSGI_APPLICATION = 'example.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(WORK_DIR, 'db.sqlite3'),
     }
 }
 
@@ -169,9 +174,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 # Staticfiles Config
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'staticroot')
+STATIC_ROOT = os.path.join(WORK_DIR, 'staticroot')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(PROJECT_DIR, 'static')]
+STATICFILES_DIRS = [
+    os.path.join(PROJECT_DIR, 'static')
+]
 
 # Logging
 # https://docs.djangoproject.com/en/1.8/topics/logging/

@@ -12,12 +12,14 @@ env:
   - DJANGO_VERSION=2.2.9
   - DJANGO_VERSION=3.0.2
 python:
-  - "3.6"
   - "3.7"
   - "3.8"
+  - "3.9"
+before_install:
+  - pip install virtualenv
+  - pip install codecov
 install:
   - python setup.py install
-  - pip install codecov
 script:
   - coverage run manage.py test --exe --all-modules
 after_success:
