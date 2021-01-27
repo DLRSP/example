@@ -1,23 +1,23 @@
-sudo: false
-
 language: python
-matrix:
+jobs:
   allow_failures:
     - os: osx
-    - env: DJANGO_VERSION=3.0.2
-os:
-  - linux
-  - osx
+    - env: DJANGO_VERSION=4
+  include:
+    - os: linux
+    - os: osx
 env:
-  - DJANGO_VERSION=2.2.9
-  - DJANGO_VERSION=3.0.2
+  - DJANGO_VERSION=3
+  - DJANGO_VERSION=4
 python:
-  - "3.7"
-  - "3.8"
-  - "3.9"
+  - '3.7'
+  - '3.8'
+  - '3.9'
 before_install:
+  - python -m pip install --upgrade pip
   - pip install virtualenv
-  - pip install codecov
+  - pip install .[testing,linting]
+  - pip install "Django<$DJANGO_VERSION"
 install:
   - python setup.py install
 script:
