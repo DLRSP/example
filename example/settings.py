@@ -10,8 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
+from django.utils.translation import gettext_lazy as _
 import os
-gettext = lambda s: s
+import re
+
 
 # Internationalization and localization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -22,19 +24,19 @@ USE_L10N = True
 USE_TZ = True
 
 LANGUAGES = (
-    ## Customize this
-    ('it', gettext('it')),
-    ('en', gettext('en')),
-    ('es', gettext('es')),
-    ('fr', gettext('fr')),
-    ('de', gettext('de')),
-    ('ru', gettext('ru')),
-    ('cn', gettext('cn')),
+    # Customize this
+    ('it', _('Italian')),
+    ('en', _('English')),
+    ('es', _('Spaniel')),
+    ('fr', _('French')),
+    ('de', _('German')),
+    ('ru', _('Russian')),
+    ('cn', _('Chinese')),
 )
 
-### Error Manager
+# --- Error Manager
 # https://docs.djangoproject.com/en/1.8/howto/error-reporting/#django.views.debug.SafeExceptionReporterFilter
-import re
+
 IGNORABLE_404_URLS = [
     re.compile(r'^/apple-touch-icon.*\.png$'),
     re.compile(r'^/favicon\.ico$'),
@@ -48,12 +50,12 @@ MANAGERS = (
 ADMINS = MANAGERS
 
 # Email Settings
-EMAIL_HOST = '' 					# <--'a real smtp server'
-EMAIL_HOST_USER = ''				# <--'your_mailbox_username'
-EMAIL_HOST_PASSWORD = ''			# <--'your_mailbox_password'
-DEFAULT_FROM_EMAIL = ''				# <--'a real email address'
-SERVER_EMAIL = ''					# <--'a real email address'
-### Error Manager
+EMAIL_HOST = ''  # <--'a real smtp server'
+EMAIL_HOST_USER = ''  # <--'your_mailbox_username'
+EMAIL_HOST_PASSWORD = ''  # <--'your_mailbox_password'
+DEFAULT_FROM_EMAIL = ''  # <--'a real email address'
+SERVER_EMAIL = ''  # <--'a real email address'
+# --- Error Manager
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -92,7 +94,7 @@ INSTALLED_APPS = [
 
 # Use nose to run all tests
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
-NOSE_INCLUDE_EXE=1
+NOSE_INCLUDE_EXE = 1
 # Tell nose to measure coverage on the 'foo' and 'bar' apps
 NOSE_ARGS = [
     '--with-coverage',
@@ -112,7 +114,7 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.common.BrokenLinkEmailsMiddleware',			# <-- Error Manager 404
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',		# <-- Common Vulnerability
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',  # <-- Common Vulnerability
 )
 MIDDLEWARE = MIDDLEWARE_CLASSES
 
@@ -150,7 +152,6 @@ DATABASES = {
         'NAME': os.path.join(WORK_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.8/ref/settings/#auth-password-validators
