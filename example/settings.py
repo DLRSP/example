@@ -88,18 +88,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_nose',
     'django_errors',
     'example'
-]
-
-# Use nose to run all tests
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
-NOSE_INCLUDE_EXE = 1
-# Tell nose to measure coverage on the 'foo' and 'bar' apps
-NOSE_ARGS = [
-    '--with-coverage',
-    '--cover-package=django_errors',
 ]
 
 MIDDLEWARE_CLASSES = (
@@ -178,9 +168,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Staticfiles Config
 STATIC_ROOT = os.path.join(WORK_DIR, 'staticroot')
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = [
-#     os.path.join(PROJECT_DIR, 'static')
-# ]
+STATICFILES_DIRS = [
+    os.path.join(PROJECT_DIR, 'static')
+]
 
 # Logging
 # https://docs.djangoproject.com/en/1.8/topics/logging/
@@ -217,11 +207,6 @@ LOGGING = {
             'propagate': True,
             "level": "INFO",
         },
-        'socialprofile': {
-            'handlers': ['console'],
-            'propagate': True,
-            'level': 'DEBUG',
-        },
         'django': {
             'handlers': ['console'],
             'propagate': True,
@@ -234,5 +219,15 @@ LOGGING = {
         },
     }
 }
+
+if DEBUG:
+    # Use nose to run all tests
+    INSTALLED_APPS.append('django_nose')
+    TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+    NOSE_INCLUDE_EXE = 1
+    NOSE_ARGS = [
+        '--with-coverage',
+        '--cover-package=django_errors',
+    ]
 
 django_heroku.settings(locals())
