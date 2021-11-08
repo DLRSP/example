@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 from django.utils.translation import gettext_lazy as _
 import os
 import re
+import django_heroku
 
 
 # Internationalization and localization
@@ -76,7 +77,7 @@ SECRET_KEY = 'e1bt9i8u14_c!s8zi0b@5uqunn137+^vvo7$gj-6#z3&858h!w'
 DEBUG = False
 
 # https://docs.djangoproject.com/en/1.8/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'django-errors.herokuapp.com']
 
 # Application definition
 # https://docs.djangoproject.com/en/1.8/ref/applications/
@@ -177,9 +178,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Staticfiles Config
 STATIC_ROOT = os.path.join(WORK_DIR, 'staticroot')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(PROJECT_DIR, 'static')
-]
+# STATICFILES_DIRS = [
+#     os.path.join(PROJECT_DIR, 'static')
+# ]
 
 # Logging
 # https://docs.djangoproject.com/en/1.8/topics/logging/
@@ -233,3 +234,5 @@ LOGGING = {
         },
     }
 }
+
+django_heroku.settings(locals())
