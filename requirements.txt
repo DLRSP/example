@@ -1,4 +1,9 @@
 django
+
+# Robots.txt
+django-robots
+
+# Custom Wrap Errors
 django-errors
 
 # Needed by Heroku
