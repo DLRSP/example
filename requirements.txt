@@ -1,3 +1,4 @@
+django
 django-errors
 
 # Needed by Heroku
