@@ -1,6 +1,7 @@
 django
 
 # Robots.txt
+six                         #<-- Need By django-robots
 django-robots
 
 # Custom Wrap Errors
