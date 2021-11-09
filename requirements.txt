@@ -1,2 +1,5 @@
-django_heroku
 django-errors
+
+# Needed by Heroku
+django_heroku
+gunicorn
