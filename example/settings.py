@@ -168,9 +168,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Staticfiles Config
 STATIC_ROOT = os.path.join(WORK_DIR, 'staticroot')
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = [
-#     os.path.join(PROJECT_DIR, 'static')
-# ]
+STATICFILES_DIRS = [
+    os.path.join(PROJECT_DIR, 'static')
+]
 
 # Logging
 # https://docs.djangoproject.com/en/1.8/topics/logging/
