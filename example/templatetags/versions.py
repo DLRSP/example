@@ -1,5 +1,5 @@
-from django import template
 from django import __version__ as django_ver
+from django import template
 from django_errors import __version__ as django_errors_ver
 
 register = template.Library()
