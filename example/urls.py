@@ -39,12 +39,14 @@ urlpatterns = [
     path("bad_request/", view_bad_request, name="bad_request"),
     path("permission_denied/", view_permission_denied, name="permission_denied"),
     path("not_found/", view_not_found, name="not_found"),
-    path("not_found_with_image/", view_not_found_with_image, name="not_found_with_image"),
+    path(
+        "not_found_with_image/", view_not_found_with_image, name="not_found_with_image"
+    ),
     path("not_allowed/", view_not_allowed, name="not_allowed"),
     path("internal_error/", view_internal_server_error, name="internal_server_error"),
     url(r"^static/(?P<path>.*)$", serve, {"document_root": settings.STATIC_ROOT}),
     path("i18n/", include("django.conf.urls.i18n")),
-    url(r'^filer/', include('filer.urls')),
+    url(r"^filer/", include("filer.urls")),
 ]
 
 # Server Static Files

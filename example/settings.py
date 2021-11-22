@@ -82,13 +82,10 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "django.contrib.sitemaps",
     "robots",
-
-    'easy_thumbnails',
-    'filer',
-    'mptt',
-
+    "easy_thumbnails",
+    "filer",
+    "mptt",
     "django_errors",
-
     "example",
 ]
 
@@ -145,25 +142,26 @@ DATABASES = {
         "NAME": os.path.join(WORK_DIR, "db.sqlite3"),
     }
 }
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 # Absolute path to the directory that holds media.
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(WORK_DIR, 'mediaroot')
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(WORK_DIR, "mediaroot")
 
 # Static files (CSS, JavaScript, Images)
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(WORK_DIR, 'staticroot')
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(WORK_DIR, "staticroot")
 
 # THUMBNAIL
-THUMBNAIL_PREFIX = 'thumbs_'
-THUMBNAIL_NAMER = 'easy_thumbnails.namers.source_hashed'
+THUMBNAIL_PREFIX = "thumbs_"
+THUMBNAIL_NAMER = "easy_thumbnails.namers.source_hashed"
 THUMBNAIL_HIGH_RESOLUTION = True
 THUMBNAIL_PROCESSORS = (
-    'easy_thumbnails.processors.colorspace',
-    'easy_thumbnails.processors.autocrop',
+    "easy_thumbnails.processors.colorspace",
+    "easy_thumbnails.processors.autocrop",
     # 'easy_thumbnails.processors.scale_and_crop',
-    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
-    'easy_thumbnails.processors.filters',
+    "filer.thumbnail_processors.scale_and_crop_with_subject_location",
+    "easy_thumbnails.processors.filters",
 )
 
 # Password validation

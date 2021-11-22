@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n static %}
+{% load i18n static versions %}
 
 {% block body_class %}{% endblock %}
 
@@ -26,15 +26,19 @@
 		</form>
 	</div>
 	<div>
-	<p>
-		<a href="{% url 'bad_request' %}" class="btn btn-warning" role="button">400</a>
-		<a href="{% url 'permission_denied' %}" class="btn btn-primary" role="button">403</a>
-		<a href="{% url 'not_found' %}" class="btn btn-info" role="button">404</a>
-		<a href="{% url 'not_found_with_image' %}" class="btn btn-info" role="button">404 (with image)</a>
-		<a href="{% url 'not_allowed' %}" class="btn btn-warning" role="button">405</a>
-		<a href="{% url 'internal_server_error' %}" class="btn btn-danger" role="button">500</a>
-	</p>
+		<p>
+			<a href="{% url 'bad_request' %}" class="btn btn-warning" role="button">400</a>
+			<a href="{% url 'permission_denied' %}" class="btn btn-primary" role="button">403</a>
+			<a href="{% url 'not_found' %}" class="btn btn-info" role="button">404</a>
+			<a href="{% url 'not_found_with_image' %}" class="btn btn-info" role="button">404 (with image)</a>
+			<a href="{% url 'not_allowed' %}" class="btn btn-warning" role="button">405</a>
+			<a href="{% url 'internal_server_error' %}" class="btn btn-danger" role="button">500</a>
+		</p>
 	</div>
+
+	{% load_django_ver as django_ver %}
+	{% load_django_errors_ver as django_errors_ver %}
+	<p class="mt-5 mb-3 text-muted">Django: <b>{{ django_ver }}</b> - django-errors: <b><a href="https://pypi.org/project/django-errors/" >{{ django_errors_ver }}</a></b></p>
 </div>
 {% endblock %}
 

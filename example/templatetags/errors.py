@@ -15,8 +15,14 @@ def load_error_img(context):
 
     if context_cache is None:
         try:
-            custom_context = MyBackground.objects.values('image__file').filter(name=context['error_code']).first()
-            context_cache = cache.set(cache_key, custom_context["image__file"], timeout=86400)
+            custom_context = (
+                MyBackground.objects.values("image__file")
+                .filter(name=context["error_code"])
+                .first()
+            )
+            context_cache = cache.set(
+                cache_key, custom_context["image__file"], timeout=86400
+            )
             return custom_context["image__file"]
         except Exception as err:
             print(err)
