@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static errors %}
+
+{% block content %}
+
+	{% load_error_img as error_img %}
+
+	<div style="background-image: url( {% static error_img %} );">
+		<strong>Oops! </strong> {{ error_message }}
+	</div>
+
+{% endblock content %}

@@ -4,6 +4,9 @@ django
 six                         #<-- Need By django-robots
 django-robots
 
+# Upload Images
+django-filer
+
 # Custom Wrap Errors
 django-errors
 

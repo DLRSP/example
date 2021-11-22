@@ -4,4 +4,3 @@
 
 # Demo
 Try the demo [here](https://django-errors.herokuapp.com/)
-

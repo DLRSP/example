@@ -1,29 +1,42 @@
 """Django Views for django-errors module"""
-from django.http import HttpResponseBadRequest, HttpResponseForbidden, HttpResponseNotFound, HttpResponseServerError
+from django.conf import settings
+from django.http import Http404, HttpResponse
+from django.core.exceptions import PermissionDenied, SuspiciousOperation
 from django.shortcuts import render
-from django.template import loader
+from django.views.decorators.http import require_http_methods
 
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, "index.html")
 
 
-def view_bad_request(request, exception=None):
-    template = loader.get_template("errors/400.html")
-    return HttpResponseBadRequest(template.render(request=request))
+def view_bad_request(request):
+    raise SuspiciousOperation()
 
 
-def view_permission_denied(request, exception=None):
-    template = loader.get_template("errors/403.html")
-    return HttpResponseForbidden(template.render(request=request))
+def view_permission_denied(request):
+    raise PermissionDenied()
 
 
-def view_not_found(request, exception=None):
-    # Override original template - "Custom" inside the tilte
-    template = loader.get_template("errors/404.html")
-    return HttpResponseNotFound(template.render(request=request))
+def view_not_found(request):
+    # Override original template - "Custom" inside the title
+    # add your html file inside "errors/404.html"
+    raise Http404()
+
+
+def view_not_found_with_image(request):
+    # Override original template - "Custom" inside the title
+    # add your html file inside "errors/404-image.html"
+    settings.TEMPLATE_ERROR_404 = "errors/404-image.html"
+    raise Http404()
+
+
+@require_http_methods(["POST"])
+def view_not_allowed(request):
+    return HttpResponse(
+        b"This text should be visible only with post request!", status=200
+    )
 
 
 def view_internal_server_error(request):
-    template = loader.get_template("errors/500.html")
-    return HttpResponseServerError(template.render(request=request))
+    raise Exception("Code 500!")

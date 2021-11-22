@@ -1,9 +1,10 @@
 """Unit Tests for the Example module"""
 
-from django.test import TestCase
 import logging
 
-LOGGER = logging.getLogger(name='example')
+from django.test import TestCase
+
+LOGGER = logging.getLogger(name="example")
 
 
 class ExampleTestCase(TestCase):
@@ -20,5 +21,5 @@ class ExampleTestCase(TestCase):
     def test_admin_urls(self):
         """Test that redirects kicking in when trying to go to secure page."""
         LOGGER.debug("Example Test Redirect URLs")
-        response = self.client.get('/admin/', follow=True)
+        response = self.client.get("/admin/", follow=True)
         self.assertRedirects(response, "http://testserver/admin/login/?next=/admin/")

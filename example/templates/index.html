@@ -4,23 +4,36 @@
 {% block body_class %}{% endblock %}
 
 {% block content %}
+
 <div class="container" id="layout">
-    <!-- Docs nav ================================================== -->
-    <div class="row">
-		<div class="col-lg-9 col-sm-9" id="article">
-			<!-- Button -->
-			<section id="button">
-				<div class="page-header">
-					<h1>django-errors</h1>
-				</div>
-				<p>
-					<a href="{% url 'bad_request' %}"><button class="ui-button-warning">400</button></a>
-					<a href="{% url 'permission_denied' %}"><button class="ui-button-warning">403</button></a>
-					<a href="{% url 'not_found' %}"><button class="ui-button-warning">404</button></a>
-					<a href="{% url 'internal_server_error' %}"><button class="ui-button-error">500</button></a>
-				</p>
-			</section>
-		</div>
+	<div class="page-header">
+		<h1>django-errors</h1>
+		<!-- Langunage -->
+		<form action="{% url 'set_language' %}" method="post">
+			{% csrf_token %}
+			<input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
+			{% get_current_language as LANGUAGE_CODE %}
+			{% get_available_languages as LANGUAGES %}
+			{% get_language_info_list for LANGUAGES as languages %}
+			{% for language in languages %}
+			<button type="submit"
+					name="language"
+					value="{{ language.code }}"
+					class="{% if language.code == LANGUAGE_CODE %}btn-success{% else %}btn-outline-primary{% endif %}">
+				{{ language.name_local }}
+			</button>
+			{% endfor %}
+		</form>
+	</div>
+	<div>
+	<p>
+		<a href="{% url 'bad_request' %}" class="btn btn-warning" role="button">400</a>
+		<a href="{% url 'permission_denied' %}" class="btn btn-primary" role="button">403</a>
+		<a href="{% url 'not_found' %}" class="btn btn-info" role="button">404</a>
+		<a href="{% url 'not_found_with_image' %}" class="btn btn-info" role="button">404 (with image)</a>
+		<a href="{% url 'not_allowed' %}" class="btn btn-warning" role="button">405</a>
+		<a href="{% url 'internal_server_error' %}" class="btn btn-danger" role="button">500</a>
+	</p>
 	</div>
 </div>
 {% endblock %}

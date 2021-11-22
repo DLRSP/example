@@ -14,27 +14,44 @@ Including another URLconf
     2. Import the include() function: from django.conf.urls import url, include
     3. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.urls import path
 from django.conf import settings
-from django.conf.urls import url, include
+from django.conf.urls import include, url
 from django.contrib import admin
+from django.conf.urls.static import static
+from django.urls import path
 from django.views.static import serve
-from .views import index, view_bad_request, view_permission_denied, view_not_found, view_internal_server_error
-
 from django_errors import views as errors_views
 
+from .views import (
+    index,
+    view_bad_request,
+    view_internal_server_error,
+    view_not_found,
+    view_not_found_with_image,
+    view_not_allowed,
+    view_permission_denied,
+)
+
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    path('', index, name="index"),
-    url(r'', include('django_errors.urls')),
-
-    path('bad_request/', view_bad_request, name="bad_request"),
-    path('permission_denied/', view_permission_denied, name="permission_denied"),
-    path('not_found/', view_not_found, name="not_found"),
-    path('internal_server_error/', view_internal_server_error, name="internal_server_error"),
-
-    url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
+    url(r"^admin/", admin.site.urls),
+    path("", index, name="index"),
+    url(r"", include("django_errors.urls")),
+    path("bad_request/", view_bad_request, name="bad_request"),
+    path("permission_denied/", view_permission_denied, name="permission_denied"),
+    path("not_found/", view_not_found, name="not_found"),
+    path("not_found_with_image/", view_not_found_with_image, name="not_found_with_image"),
+    path("not_allowed/", view_not_allowed, name="not_allowed"),
+    path("internal_error/", view_internal_server_error, name="internal_server_error"),
+    url(r"^static/(?P<path>.*)$", serve, {"document_root": settings.STATIC_ROOT}),
+    path("i18n/", include("django.conf.urls.i18n")),
+    url(r'^filer/', include('filer.urls')),
 ]
+
+# Server Static Files
+# urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+# Server Media Files
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler400 = errors_views.custom_400
 """ Handle 400 error """
