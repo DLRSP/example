@@ -1,5 +1,6 @@
 from django import template
 from django.core.cache import cache
+
 from example.models import MyBackground
 
 register = template.Library()

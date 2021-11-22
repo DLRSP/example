@@ -1,7 +1,7 @@
 """Django Views for django-errors module"""
 from django.conf import settings
-from django.http import Http404, HttpResponse
 from django.core.exceptions import PermissionDenied, SuspiciousOperation
+from django.http import Http404, HttpResponse
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
 
