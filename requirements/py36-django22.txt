@@ -230,9 +230,9 @@ sqlparse==0.4.2 \
 svglib==1.1.0 \
     --hash=sha256:520ee5290ee2ebeebd20ca0d7d995c08c903b364fcf515826bab43a1288d422e
     # via easy-thumbnails
-tinycss2==1.1.0 \
-    --hash=sha256:0353b5234bcaee7b1ac7ca3dea7e02cd338a9f8dcbb8f2dcd32a5795ec1e5f9a \
-    --hash=sha256:fbdcac3044d60eb85fdb2aa840ece43cf7dbe798e373e6ee0be545d4d134e18a
+tinycss2==1.1.1 \
+    --hash=sha256:fe794ceaadfe3cf3e686b22155d0da5780dd0e273471a51846d0a02bc204fec8 \
+    --hash=sha256:b2e44dd8883c360c35dd0d1b5aad0b610e5156c2cb3b33434634e539ead9d8bf
     # via
     #   cssselect2
     #   svglib
