@@ -5,7 +5,7 @@ try:  # for pip >= 10
 except ImportError:  # for pip <= 9.0.3
     from pip.req import parse_requirements
 
-install_reqs = parse_requirements('requirements/py39-django32.txt', session='hack')
+install_reqs = parse_requirements('requirements/py38-django32.txt', session='hack')
 
 reqs = [str(ir.req) for ir in install_reqs]
 
