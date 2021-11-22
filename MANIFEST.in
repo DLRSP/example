@@ -1,8 +1,6 @@
 include LICENSE
-include README.rst
+include README.md
 
 recursive-include example/static *
 recursive-include example/templates *
-
-recursive-include docs *
-recursive-include tests *
+recursive-include example/migrations *
