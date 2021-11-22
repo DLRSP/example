@@ -37,9 +37,6 @@ LANGUAGES = (
     ("zh-tw", _("繁體中文")),
 )
 
-# --- Error Manager
-# https://docs.djangoproject.com/en/1.8/howto/error-reporting/#django.views.debug.SafeExceptionReporterFilter
-
 IGNORABLE_404_URLS = [
     re.compile(r"^/apple-touch-icon.*\.png$"),
     re.compile(r"^/favicon\.ico$"),
@@ -59,16 +56,12 @@ PROJECT_DIR = os.path.abspath(os.path.join(BASE_DIR, "example"))
 # Directory where working files, such as media and databases are kept
 WORK_DIR = os.path.abspath(os.path.join(BASE_DIR, "workdir"))
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "e1bt9i8u14_c!s8zi0b@5uqunn137+^vvo7$gj-6#z3&858h!w"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-# https://docs.djangoproject.com/en/1.8/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = ["0.0.0.0", "localhost", "127.0.0.1", "django-errors.herokuapp.com"]
 
 # Application definition
@@ -165,25 +158,21 @@ THUMBNAIL_PROCESSORS = (
 )
 
 # Password validation
-# https://docs.djangoproject.com/en/1.8/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME": "django.contrib.auth.password_validation."
+        + "UserAttributeSimilarityValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        "NAME": "django.contrib.auth.password_validation." + "MinimumLengthValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+        "NAME": "django.contrib.auth.password_validation." + "CommonPasswordValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        "NAME": "django.contrib.auth.password_validation." + "NumericPasswordValidator",
     },
 ]
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = "/static/"
@@ -199,7 +188,8 @@ LOGGING = {
     "disable_existing_loggers": False,
     "formatters": {
         "verbose": {
-            "format": "%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s"
+            "format": "%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d "
+            + "%(message)s"
         },
         "simple": {"format": "%(levelname)s %(message)s"},
     },

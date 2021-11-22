@@ -11,7 +11,7 @@ def load_error_img(context):
     cache_key = f"site_error_{context['error_code']}_context"
     try:
         context_cache = cache.get(cache_key)
-    except Exception as err:
+    except Exception:
         context_cache = None
 
     if context_cache is None:

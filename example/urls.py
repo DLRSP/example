@@ -22,9 +22,15 @@ from django.urls import path
 from django.views.static import serve
 from django_errors import views as errors_views
 
-from .views import (index, view_bad_request, view_internal_server_error,
-                    view_not_allowed, view_not_found,
-                    view_not_found_with_image, view_permission_denied)
+from .views import (
+    index,
+    view_bad_request,
+    view_internal_server_error,
+    view_not_allowed,
+    view_not_found,
+    view_not_found_with_image,
+    view_permission_denied,
+)
 
 urlpatterns = [
     url(r"^admin/", admin.site.urls),
