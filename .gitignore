@@ -1,7 +1,11 @@
 #################
+## PyCharm
+#################
+.idea
+
+#################
 ## Eclipse
 #################
-
 *.pydevproject
 .project
 .metadata
@@ -26,13 +30,6 @@ local.properties
 
 # PDT-specific
 .buildpath
-
-
-#################
-## PyCharm
-#################
-.DS_Store
-.idea
 
 
 #################
@@ -131,6 +128,8 @@ Thumbs.db
 # Folder config file
 Desktop.ini
 
+# Utility Script
+exec_*.bat
 
 #############
 ## Python
@@ -141,7 +140,7 @@ Desktop.ini
 # Packages
 *.egg
 *.egg-info
-# dist
+dist
 build
 eggs
 parts
@@ -157,11 +156,21 @@ pip-log.txt
 .coverage
 .tox
 
-#Translations
-*.mo
-
 #Mr Developer
 .mr.developer.cfg
 
 # Mac crap
 .DS_Store
+
+#############
+## Gh-Pages
+#############
+site
+
+#############
+## Django
+#############
+# Translations
+*.mo
+# Translations
+workdir
