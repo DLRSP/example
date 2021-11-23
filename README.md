@@ -15,6 +15,7 @@ Try the demo [here](https://django-sp.herokuapp.com/)
 # Heroku References
 - https://devcenter.heroku.com/articles/django-memcache
 - https://devcenter.heroku.com/articles/s3
+- https://devcenter.heroku.com/articles/python-concurrency-and-database-connections
 
 [django-errors]: https://github.com/DLRSP/django-errors
 [django-sp]: https://github.com/DLRSP/django-sp
