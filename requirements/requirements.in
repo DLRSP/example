@@ -6,3 +6,6 @@ django-errors
 django_heroku
 gunicorn
 whitenoise
+boto3
+django-storages
+django_compressor
