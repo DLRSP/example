@@ -238,5 +238,10 @@ if DEBUG:
         "--cover-package=django_errors",
     ]
 
-if os.name != "nt":
+if os.environ["DYNO"]:
+    # Simplified static file serving.
+    # https://warehouse.python.org/project/whitenoise/
+    MIDDLEWARE = MIDDLEWARE + ("whitenoise.middleware.WhiteNoiseMiddleware",)
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
     django_heroku.settings(locals())

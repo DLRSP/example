@@ -5,3 +5,4 @@ django-filer
 django-errors
 django_heroku
 gunicorn
+whitenoise
