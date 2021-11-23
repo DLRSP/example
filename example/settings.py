@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 import re
+import datetime
 
 import django_heroku
 from django.utils.translation import gettext_lazy as _
@@ -157,6 +158,83 @@ THUMBNAIL_PROCESSORS = (
     "easy_thumbnails.processors.filters",
 )
 
+STATICFILES_FINDERS = (
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+)
+DEFAULT_FILE_STORAGE = 'example.storage.MediaRootCachedS3Boto3Storage'
+if not os.getenv('RUN_COMPRESS', False):
+    STATICFILES_STORAGE = 'example.storage.StaticRootCachedS3Boto3Storage'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
+COMPRESS_ROOT = STATIC_ROOT
+
+AWS_STORAGE_BUCKET_NAME = 'django-errors'
+# AWS_S3_CUSTOM_DOMAIN = f"cdn.{AWS_STORAGE_BUCKET_NAME}.it"
+
+# STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
+# MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
+
+AWS_DEFAULT_ACL = 'public-read'
+AWS_QUERYSTRING_AUTH = False
+AWS_FILE_EXPIRE = 200
+AWS_PRELOAD_METADATA = True
+
+two_months = datetime.timedelta(days=61)
+date_two_months_later = datetime.date.today() + two_months
+expires = date_two_months_later.strftime("%A, %d %B %Y 20:00:00 GMT")
+AWS_S3_OBJECT_PARAMETERS = {
+    'Expires': expires,
+    'CacheControl': 'max-age=%d' % (int(two_months.total_seconds()),),
+}
+
+COMPRESS_CSS_HASHING_METHOD = None
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.css_default.CssAbsoluteFilter',
+    # 'compressor.filters.css_default.CssRelativeFilter',
+    'compressor.filters.cssmin.CSSMinFilter'
+]
+COMPRESS_JS_FILTERS = [
+    'compressor.filters.jsmin.JSMinFilter',
+]
+
+COMPRESS_OUTPUT_DIR = 'compressed_static'
+COMPRESS_STORAGE = 'example.storage.StaticRootCachedS3Boto3Storage'
+# Compress and Upload on S3
+KEEP_COMMENTS_ON_MINIFYING = False
+HTML_MINIFY = True
+
+FILER_STORAGES = {
+    'public': {
+        'thumbnails': {
+            'THUMBNAIL_OPTIONS': {
+                'base_dir': ''
+            },
+        },
+    },
+}
+
+# THUMBNAIL
+THUMBNAIL_PREFIX = 'thumbs_'
+THUMBNAIL_NAMER = 'easy_thumbnails.namers.source_hashed'
+THUMBNAIL_HIGH_RESOLUTION = True
+THUMBNAIL_PROCESSORS = (
+    'easy_thumbnails.processors.colorspace',
+    'easy_thumbnails.processors.autocrop',
+    # 'easy_thumbnails.processors.scale_and_crop',
+    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+    'easy_thumbnails.processors.filters',
+)
+THUMBNAIL_ALIASES = {
+    '': {
+        'head': {'size': (1920, 1080), 'crop': True},
+    },
+}
+
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -174,13 +252,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Static files (CSS, JavaScript, Images)
-STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(WORK_DIR, "staticroot")
-STATICFILES_FINDERS = (
-    "django.contrib.staticfiles.finders.FileSystemFinder",
-    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-)
 
 # Logging
 LOGGING = {
@@ -238,10 +309,14 @@ if DEBUG:
         "--cover-package=django_errors",
     ]
 
-if os.environ["DYNO"]:
-    # Simplified static file serving.
-    # https://warehouse.python.org/project/whitenoise/
-    MIDDLEWARE = MIDDLEWARE + ("whitenoise.middleware.WhiteNoiseMiddleware",)
-    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+try:
+    if os.environ["DYNO"]:
+        # Simplified static file serving.
+        # https://warehouse.python.org/project/whitenoise/
+        MIDDLEWARE = MIDDLEWARE + ("whitenoise.middleware.WhiteNoiseMiddleware",)
+        STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-    django_heroku.settings(locals())
+        django_heroku.settings(locals())
+except KeyError:
+    pass
+
