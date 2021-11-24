@@ -8,7 +8,7 @@ from django.views.decorators.http import require_http_methods
 
 def index(request):
     # Delete eventually custom template set by the view
-    settings.TEMPLATE_ERROR_404 = None
+    settings.TEMPLATE_ERROR_404 = "errors/404.html"
 
     return render(request, "index.html")
 
