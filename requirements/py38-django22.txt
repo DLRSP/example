@@ -41,9 +41,9 @@ django-compressor==2.4.1 \
     --hash=sha256:3358077605c146fdcca5f9eaffb50aa5dbe15f238f8854679115ebf31c0415e0 \
     --hash=sha256:f8313f59d5e65712fc28787d084fe834997c9dfa92d064a1a3ec3d3366594d04
     # via -r requirements.in
-django-errors==0.11.4.dev0 \
-    --hash=sha256:b9eb022983c9a75e8ad04a9603d59164f5f3d0050a6e4504a989961939d8765a \
-    --hash=sha256:dd426aac4409250766e593c95323ae58aa1dafd83f91c529cb9c39646cc442d6
+django-errors==0.13.0 \
+    --hash=sha256:37b6b0ebaad36606dcfbc06da6ad202b6faafcb97b8eccd8f27dec49d06935d7 \
+    --hash=sha256:936a30b7483270cdabf9d86b55e19bf50ed6621a610139d1ea18d2ac4779c3e9
     # via -r requirements.in
 django-filer==2.1.2 \
     --hash=sha256:50f9da3b40e106de084dc6e18c19a7a54397fbee60b7ddd2568b1281ed2a24b4 \
@@ -77,10 +77,6 @@ easy-thumbnails==2.8 \
     --hash=sha256:f2a9b82b9ddd1b4342ef92009589d76e1dc61082970302b9bbb7510f054b4d77 \
     --hash=sha256:fd2249d936671847fc54a2d6c8c87bcca8f803001967dd03bab6b8bcb7590825
     # via django-filer
-gunicorn==20.1.0 \
-    --hash=sha256:9dcc4547dbb1cb284accfb15ab5667a0e5d1881cc443e0677b4882a4067a807e \
-    --hash=sha256:e0a968b5ba15f8a328fdfd7ab1fcb5af4470c28aaf7e55df02a99bc13138e6e8
-    # via -r requirements.in
 jmespath==0.10.0 \
     --hash=sha256:b85d0567b8666149a93172712e68920734333c0ce7e89b78b3e987f71e5ed4f9 \
     --hash=sha256:cdf6525904cc597730141d61b36f2e4b8ecc257c420fa2f4549bac2c2d0cb72f
@@ -289,9 +285,9 @@ sqlparse==0.4.2 \
 svglib==1.1.0 \
     --hash=sha256:520ee5290ee2ebeebd20ca0d7d995c08c903b364fcf515826bab43a1288d422e
     # via easy-thumbnails
-tinycss2==1.1.0 \
-    --hash=sha256:0353b5234bcaee7b1ac7ca3dea7e02cd338a9f8dcbb8f2dcd32a5795ec1e5f9a \
-    --hash=sha256:fbdcac3044d60eb85fdb2aa840ece43cf7dbe798e373e6ee0be545d4d134e18a
+tinycss2==1.1.1 \
+    --hash=sha256:b2e44dd8883c360c35dd0d1b5aad0b610e5156c2cb3b33434634e539ead9d8bf \
+    --hash=sha256:fe794ceaadfe3cf3e686b22155d0da5780dd0e273471a51846d0a02bc204fec8
     # via
     #   cssselect2
     #   svglib
@@ -303,6 +299,10 @@ urllib3==1.26.7 \
     --hash=sha256:4987c65554f7a2dbf30c18fd48778ef124af6fab771a377103da0585e2336ece \
     --hash=sha256:c4fdf4019605b6e5423637e01bc9fe4daef873709a7973e195ceba0a62bbc844
     # via botocore
+waitress==2.0.0 \
+    --hash=sha256:29af5a53e9fb4e158f525367678b50053808ca6c21ba585754c77d790008c746 \
+    --hash=sha256:69e1f242c7f80273490d3403c3976f3ac3b26e289856936d1f620ed48f321897
+    # via -r requirements.in
 webencodings==0.5.1 \
     --hash=sha256:a0af1213f3c2226497a97e2b3aa01a7e4bee4f403f95be16fc9acd2947514a78 \
     --hash=sha256:b36a1c245f2d304965eb4e0a82848379241dc04b865afcc4aab16748587e1923
@@ -312,12 +312,4 @@ webencodings==0.5.1 \
 whitenoise==5.3.0 \
     --hash=sha256:d234b871b52271ae7ed6d9da47ffe857c76568f11dd30e28e18c5869dbd11e12 \
     --hash=sha256:d963ef25639d1417e8a247be36e6aedd8c7c6f0a08adcb5a89146980a96b577c
-    # via
-    #   -r requirements.in
-    #   django-heroku
-
-# The following packages are considered to be unsafe in a requirements file:
-setuptools==59.2.0 \
-    --hash=sha256:157d21de9d055ab9e8ea3186d91e7f4f865e11f42deafa952d90842671fc2576 \
-    --hash=sha256:4adde3d1e1c89bde1c643c64d89cdd94cbfd8c75252ee459d4500bccb9c7d05d
-    # via gunicorn
+    # via django-heroku
