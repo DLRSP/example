@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
-{% load static errors %}
+{% load errors %}
+
+{% block headtitle %}
+	{{ error }} ({{ error_code }}) - Custom with Image
+{% endblock headtitle %}
 
 {% block content %}
 
 	{% load_error_img as error_img %}
 
-	<div style="background-image: url( {{ MEDIA_URL }}{% static error_img %} );">
+	<div style="background-image: url( {{ MEDIA_URL }}{{ error_img }} );">
 		<strong>Oops! </strong> {{ error_message }}
 	</div>
 
