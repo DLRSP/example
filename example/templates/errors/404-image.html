@@ -7,10 +7,15 @@
 
 {% block content %}
 
-	{% load_error_img as error_img %}
+	{% block body_class %}
+		{% load_error_img as error_img %}
+		style="background-image: url( {{ MEDIA_URL }}{{ error_img }} );"
+	{% block body_class %}
 
-	<div style="background-image: url( {{ MEDIA_URL }}{{ error_img }} );">
-		<strong>Oops! </strong> {{ error_message }}
-	</div>
+    <section title="{{ error }}">
+        <h2>
+			<strong>Oops! </strong> {{ error_message }}
+		</h2>
+    </section>
 
 {% endblock content %}
