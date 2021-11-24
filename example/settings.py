@@ -314,4 +314,7 @@ if DEBUG:
 if os.environ.get("DYNO", None):
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
-    django_heroku.settings(locals(), staticfiles=False)
+    django_heroku.settings(
+        locals(),
+        staticfiles=False,
+    )
