@@ -7,6 +7,9 @@ from django.views.decorators.http import require_http_methods
 
 
 def index(request):
+    # Clean eventually custom template setting by the view
+    settings.TEMPLATE_ERROR_404 = ""
+
     return render(request, "index.html")
 
 
@@ -24,9 +27,12 @@ def view_not_found(request):
     raise Http404()
 
 
+def view_not_found_with_js(request):
+    settings.TEMPLATE_ERROR_404 = "errors/404-js.html"
+    raise Http404()
+
+
 def view_not_found_with_image(request):
-    # Override original template - "Custom" inside the title
-    # add your html file inside "errors/404-image.html"
     settings.TEMPLATE_ERROR_404 = "errors/404-image.html"
     raise Http404()
 
