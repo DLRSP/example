@@ -1,12 +1,15 @@
 """Django Views for django-errors module"""
+from django.conf import settings
 from django.core.exceptions import PermissionDenied, SuspiciousOperation
 from django.http import Http404, HttpResponse
 from django.shortcuts import render
-from django.test.utils import override_settings
 from django.views.decorators.http import require_http_methods
 
 
 def index(request):
+    # Delete eventually custom template set by the view
+    settings.TEMPLATE_ERROR_404 = None
+
     return render(request, "index.html")
 
 
@@ -24,13 +27,13 @@ def view_not_found(request):
     raise Http404()
 
 
-@override_settings(TEMPLATE_ERROR_404="errors/404-js.html")
 def view_not_found_with_js(request):
+    settings.TEMPLATE_ERROR_404 = "errors/404-js.html"
     raise Http404()
 
 
-@override_settings(TEMPLATE_ERROR_404="errors/404-image.html")
 def view_not_found_with_image(request):
+    settings.TEMPLATE_ERROR_404 = "errors/404-image.html"
     raise Http404()
 
 
