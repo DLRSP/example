@@ -6,10 +6,18 @@
 {% endblock headtitle %}
 
 {% block content %}
-	{% block body_css %}
+	{% block css %}
 		{% load_error_img as error_img %}
-		style="background-image: url( {{ MEDIA_URL }}{{ error_img }} );"
-	{% endblock body_css %}
+		<style>
+			html {
+			  background: url({{ MEDIA_URL }}{{ error_img }}) no-repeat center center fixed;
+			  -webkit-background-size: cover;
+			  -moz-background-size: cover;
+			  -o-background-size: cover;
+			  background-size: cover;
+			}
+		</style>
+	{% endblock css %}
 
 	<div class="d-flex align-items-start flex-column h-100vh inverse-text text-center">
 		<div class="ml-auto mr-auto">
