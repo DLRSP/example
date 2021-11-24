@@ -8,7 +8,7 @@ class StaticRootCachedS3Boto3Storage(S3Boto3Storage):
     """
 
     def __init__(self, *args, **kwargs):
-        super(StaticRootCachedS3Boto3Storage, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.location = "static"
         self.local_storage = get_storage_class(
             "compressor.storage.CompressorFileStorage"
@@ -16,9 +16,7 @@ class StaticRootCachedS3Boto3Storage(S3Boto3Storage):
 
     def save(self, name, content, max_length=None):
         self.local_storage._save(name, content)
-        super(StaticRootCachedS3Boto3Storage, self).save(
-            name, self.local_storage._open(name)
-        )
+        super().save(name, self.local_storage._open(name))
         return name
 
 
@@ -28,7 +26,7 @@ class MediaRootCachedS3Boto3Storage(S3Boto3Storage):
     """
 
     def __init__(self, *args, **kwargs):
-        super(MediaRootCachedS3Boto3Storage, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.location = "media"
         self.local_storage = get_storage_class(
             "compressor.storage.CompressorFileStorage"
@@ -36,9 +34,7 @@ class MediaRootCachedS3Boto3Storage(S3Boto3Storage):
 
     def save(self, name, content, max_length=None):
         self.local_storage._save(name, content)
-        super(MediaRootCachedS3Boto3Storage, self).save(
-            name, self.local_storage._open(name)
-        )
+        super().save(name, self.local_storage._open(name))
         return name
 
 
