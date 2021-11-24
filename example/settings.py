@@ -312,7 +312,7 @@ if DEBUG:
         "--cover-package=django_errors",
     ]
 
-if os.environ.get("DYNO", None):
+if os.getenv("DYNO", None):
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
     django_heroku.settings(
