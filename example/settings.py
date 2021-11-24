@@ -144,11 +144,9 @@ DATABASES = {
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 # Absolute path to the directory that holds media.
-MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(WORK_DIR, "mediaroot")
 
 # Static files (CSS, JavaScript, Images)
-STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(WORK_DIR, "staticroot")
 
 # THUMBNAIL
