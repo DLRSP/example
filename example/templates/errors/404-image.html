@@ -10,7 +10,7 @@
 	{% block body_class %}
 		{% load_error_img as error_img %}
 		style="background-image: url( {{ MEDIA_URL }}{{ error_img }} );"
-	{% block body_class %}
+	{% endblock body_class %}
 
     <section title="{{ error }}">
         <h2>
