@@ -16,9 +16,9 @@ Including another URLconf
 """
 from django.conf import settings
 from django.conf.urls import include, url
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
-from django.views.static import serve
 from django_errors import views as errors_views
 
 from .views import (
@@ -43,11 +43,15 @@ urlpatterns = [
     ),
     path("not_allowed/", view_not_allowed, name="not_allowed"),
     path("internal_error/", view_internal_server_error, name="internal_server_error"),
-    url(r"^static/(?P<path>.*)$", serve, {"document_root": settings.STATIC_ROOT}),
-    url(r"^media/(?P<path>.*)$", serve, {"document_root": settings.MEDIA_ROOT}),
     path("i18n/", include("django.conf.urls.i18n")),
     url(r"^filer/", include("filer.urls")),
 ]
+
+# @># Server Static Files
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+# @># Server Media Files
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler400 = errors_views.custom_400
 """ Handle 400 error """
