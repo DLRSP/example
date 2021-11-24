@@ -28,6 +28,7 @@ from .views import (
     view_not_allowed,
     view_not_found,
     view_not_found_with_image,
+    view_not_found_with_js,
     view_permission_denied,
 )
 
@@ -38,6 +39,7 @@ urlpatterns = [
     path("bad_request/", view_bad_request, name="bad_request"),
     path("permission_denied/", view_permission_denied, name="permission_denied"),
     path("not_found/", view_not_found, name="not_found"),
+    path("not_found_with_js/", view_not_found_with_js, name="not_found_with_js"),
     path(
         "not_found_with_image/", view_not_found_with_image, name="not_found_with_image"
     ),
