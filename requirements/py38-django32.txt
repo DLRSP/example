@@ -12,9 +12,9 @@ boto3==1.20.12 \
     --hash=sha256:224a380a3a825beaf7aa54119e7469884c6adb9098cbf3d64bd487ac6c564d57 \
     --hash=sha256:df9c74f3dd35e1147e0e873984384e00b0db8c3f6552d8e0b7f50e7b8177f537
     # via -r requirements.in
-botocore==1.23.12 \
-    --hash=sha256:002f96a07503c83c1d110174506e68a8fbcb4765b7eafa5f66ef59d910912d17 \
-    --hash=sha256:3047ddf3ee3e54d58b896b442d3044eab30e6bfac2a2fbac428e5c12d8670a3d
+botocore==1.27.43 \
+    --hash=sha256:3cfe585e90069e8e7b6ec10855976d974ec13a53bbf9b1a0f77193804be7cb17 \
+    --hash=sha256:ade148d0e29f633f429ea6c7ea215e173c64e8b155e574950892aa4eade969d0
     # via
     #   boto3
     #   s3transfer
