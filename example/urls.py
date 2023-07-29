@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.conf import settings
 from django.conf.urls import include
+from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, re_path
@@ -34,6 +35,10 @@ from .views import (
 
 urlpatterns = [
     re_path(r"^admin/", admin.site.urls),
+    re_path(r"^filer/", include("filer.urls")),
+]
+
+urlpatterns += i18n_patterns(
     path("", index, name="index"),
     re_path(r"", include("django_errors.urls")),
     path("bad_request/", view_bad_request, name="bad_request"),
@@ -46,8 +51,7 @@ urlpatterns = [
     path("not_allowed/", view_not_allowed, name="not_allowed"),
     path("internal_error/", view_internal_server_error, name="internal_server_error"),
     path("i18n/", include("django.conf.urls.i18n")),
-    re_path(r"^filer/", include("filer.urls")),
-]
+)
 
 # @># Server Static Files
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
