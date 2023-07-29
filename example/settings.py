@@ -67,7 +67,7 @@ SECRET_KEY = os.environ.get(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["0.0.0.0", "localhost", "127.0.0.1", "django-errors.herokuapp.com"]
+ALLOWED_HOSTS = ["0.0.0.0", "localhost", "127.0.0.1", "django-errors.herokuapp.com", "django-errors.vercel.app"]
 
 # Application definition
 INSTALLED_APPS = [
