@@ -15,10 +15,10 @@ Including another URLconf
     3. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
 from django.conf import settings
-from django.conf.urls import include, url
+from django.conf.urls import include
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
 from django_errors import views as errors_views
 
 from .views import (
@@ -33,9 +33,9 @@ from .views import (
 )
 
 urlpatterns = [
-    url(r"^admin/", admin.site.urls),
+    re_path(r"^admin/", admin.site.urls),
     path("", index, name="index"),
-    url(r"", include("django_errors.urls")),
+    re_path(r"", include("django_errors.urls")),
     path("bad_request/", view_bad_request, name="bad_request"),
     path("permission_denied/", view_permission_denied, name="permission_denied"),
     path("not_found/", view_not_found, name="not_found"),
@@ -46,7 +46,7 @@ urlpatterns = [
     path("not_allowed/", view_not_allowed, name="not_allowed"),
     path("internal_error/", view_internal_server_error, name="internal_server_error"),
     path("i18n/", include("django.conf.urls.i18n")),
-    url(r"^filer/", include("filer.urls")),
+    re_path(r"^filer/", include("filer.urls")),
 ]
 
 # @># Server Static Files

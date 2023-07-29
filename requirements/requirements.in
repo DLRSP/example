@@ -4,6 +4,7 @@ django-robots
 django-filer
 django-errors
 django_heroku
+django-mptt
 waitress
 boto3
 django-storages
